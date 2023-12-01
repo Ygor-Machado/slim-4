@@ -1,0 +1,36 @@
+# Ignorar diretórios gerados automaticamente
+/vendor/
+/node_modules/
+
+# Ignorar arquivos específicos
+.env
+.env.local
+.env.*.local
+*.log
+*.sql
+*.sqlite
+
+# Ignorar diretórios de uploads ou caches
+/public/uploads/
+/var/cache/
+
+# Ignorar arquivos de configuração local
+/config/local_config.php
+
+# Ignorar arquivos de configuração de ambiente
+/.env.local
+/.env.development
+/.env.test
+/.env.production
+
+# Ignorar arquivos do PHPStorm
+/.idea/
+
+# Ignorar o Composer autoload file
+/vendor/autoload.php
+
+# Ignorar o Composer lock file
+/composer.lock
+
+# Ignorar arquivos de log do Composer
+/logs/
