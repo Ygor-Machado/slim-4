@@ -31,6 +31,7 @@
 
 # Ignorar o Composer lock file
 /composer.lock
+/composer.json
 
 # Ignorar arquivos de log do Composer
 /logs/

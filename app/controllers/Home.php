@@ -2,6 +2,7 @@
 
 namespace App\controllers;
 use App\database\models\User;
+use Psr\Http\Message\ServerRequestInterface;
 
 class Home extends Base
 {
@@ -16,11 +17,11 @@ class Home extends Base
 
         $users = $this->user->find();
 
-        $created = $this->user->create(['firstName' => 'primeiro', 'lastName' => 'Ultimo','email' => '@email.com', 'password' => 'algumaai']);
-
         return $this->getTwig()->render($response, $this->setView('site/home'), [
             'title' => 'Home',
             'users'  => $users,
         ]);
+
+
     }
 }
