@@ -35,6 +35,7 @@ class User extends Base
         $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
         $this->validate->required(['firstName', 'lastName', 'email', 'password'])->exist($this->user, 'email', $email );
+
         $errors = $this->validate->getErrors();
 
         if($errors) {
