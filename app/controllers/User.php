@@ -29,15 +29,33 @@ class User extends Base
 
     public function store($request, $response, $args)
     {
-        $email = $_POST['email'];
+        $firstName = filter_input(INPUT_POST, 'firstName', FILTER_SANITIZE_STRING);
+        $lastName = filter_input(INPUT_POST, 'lastName', FILTER_SANITIZE_STRING);
+        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
+        $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
-        $this->validate->required(['firstName', 'lastName', 'email'])->exist($this->user, 'email', $email );
+        $this->validate->required(['firstName', 'lastName', 'email', 'password'])->exist($this->user, 'email', $email );
         $errors = $this->validate->getErrors();
 
         if($errors) {
             Flash::flashes($errors);
             return redirect($response, '/user/create');
         }
+
+        $created = $this->user->create([
+            'firstName' => $firstName,
+            'lastName' => $lastName,
+            'email' => $email,
+            'password' => $password,
+        ]);
+
+        if ($created) {
+            Flash::set('message', 'Cadastrado com sucesso');
+            return redirect($response, '/user/create');
+        }
+
+        Flash::set('message', 'Ocorreu um erro ao cadastrar');
+        return redirect($response, '/user/create');
 
         return $response;
     }
