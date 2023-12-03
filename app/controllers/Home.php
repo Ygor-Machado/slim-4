@@ -2,14 +2,19 @@
 
 namespace App\controllers;
 use App\classes\Flash;
+use App\classes\Validate;
 use App\database\models\User;
 
 class Home extends Base
 {
 
+    private $user;
+    private $validate;
+
     public function __construct()
     {
         $this->user = new User;
+        $this->validate = new Validate();
     }
 
     public function index($request, $response)
@@ -17,13 +22,9 @@ class Home extends Base
 
         $users = $this->user->find();
 
-        $message = Flash::get('message');
-
-
         return $this->getTwig()->render($response, $this->setView('site/home'), [
             'title' => 'Home',
             'users'  => $users,
-            'message' => $message
         ]);
 
 

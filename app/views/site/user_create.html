@@ -4,8 +4,16 @@
 
 <h2>Create</h2>
 
-<form action="/user/update" method="post">
-    <input type="hidden" name="_METHOD" value="PUT">
+<form action="/user/store" method="post">
+    <input type="text" name="firstName" class="form-control" />
+    {{ messages['firstName']['message'] }}
+    <br>
+    <input type="text" name="lastName" class="form-control" />
+    {{ messages['lastName']['message'] }}
+    <br>
+    <input type="text" name="email" class="form-control" />
+    {{ messages['email']['message'] }}
+    <br>
     <button type="submit">Cadastrar</button>
 </form>
 
