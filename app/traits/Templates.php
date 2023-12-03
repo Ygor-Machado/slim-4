@@ -2,6 +2,7 @@
 
 namespace App\traits;
 
+use App\classes\TwigFilters;
 use Slim\Views\Twig;
 
 trait Templates
@@ -9,7 +10,10 @@ trait Templates
     public function getTwig()
     {
         try {
-            return Twig::create(DIR_VIEWS);
+            $twig = Twig::create(DIR_VIEWS);
+            $twig->addExtension(new TwigFilters());
+
+            return $twig;
         }catch (\Exception $e){
             echo $e->getMessage();
         }

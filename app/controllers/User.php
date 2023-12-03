@@ -17,7 +17,7 @@ class User extends Base
         $this->user = new ModelsUser();
     }
 
-    public function create($request, $response, $args)
+    public function create($request, $response, $args): \Psr\Http\Message\ResponseInterface
     {
         $messages = Flash::getAll();
 
